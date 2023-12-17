@@ -3,7 +3,7 @@
         <mat-card color="primary" id="header">
             <mat-card-header>
                 <mat-card-title>
-                    Login
+                    Register
                 </mat-card-title>
             </mat-card-header>
         </mat-card>
@@ -29,8 +29,22 @@
       </p>
     </div>
     <br>
+    <mat-form-field class="field">
+        <mat-label>First Name</mat-label>
+        <input matInput type="text" id="password" class="input" formControlName="firstname">
+      </mat-form-field>
+      <br>
+      <mat-form-field class="field">
+        <mat-label>Last Name</mat-label>
+        <input matInput type="text" id="password" class="input" formControlName="lastname">
+      </mat-form-field>
+      <br>
+      <mat-form-field class="field">
+        <mat-label>Username</mat-label>
+        <input matInput type="text" id="password" class="input" formControlName="username">
+      </mat-form-field>
+      <br>
     <mat-card-actions class="button">
-      <button mat-raised-button color="primary" type="submit" class="button">Login</button>
+      <button mat-raised-button color="primary" type="submit" class="button">Register</button>
     </mat-card-actions>
   </form>
-  
