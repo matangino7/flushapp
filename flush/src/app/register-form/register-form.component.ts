@@ -1,18 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { first } from 'rxjs';
 
 @Component({
-  selector: 'app-login-form',
-  templateUrl: './login-form.component.html',
-  styleUrls: ['./login-form.component.css']
+  selector: 'app-register-form',
+  templateUrl: './register-form.component.html',
+  styleUrls: ['./register-form.component.css']
 })
-export class LoginFormComponent{
+export class RegisterFormComponent {
     myForm: FormGroup;
   
     constructor(private formBuilder: FormBuilder) {
       this.myForm = this.formBuilder.group({
+        username: ['', [Validators.required]],
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(10)]],
+        firstname: ['', [Validators.required]],
+        lastname: ['', [Validators.required]]
       });
     }
   

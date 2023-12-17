@@ -7,6 +7,7 @@ import { MapComponent } from './map/map.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MyMaterialModule } from  './material.module';
+import { RegisterFormComponent } from './register-form/register-form.component';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { MyMaterialModule } from  './material.module';
     AppComponent,
     MapComponent,
     LoginFormComponent,
+    RegisterFormComponent,
   ],
   imports: [
     BrowserModule,
