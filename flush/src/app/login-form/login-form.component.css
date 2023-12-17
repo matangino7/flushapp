@@ -1,0 +1,13 @@
+  /* .invalid {
+    border: 1px solid red;
+    background-color: red;
+  }
+   */
+  .error {
+    color: red;
+  }
+
+  *{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana;
+    text-align: center;
+  }
