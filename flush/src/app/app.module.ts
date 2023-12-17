@@ -8,6 +8,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MyMaterialModule } from  './material.module';
 import { RegisterFormComponent } from './register-form/register-form.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { RegisterFormComponent } from './register-form/register-form.component';
     MapComponent,
     LoginFormComponent,
     RegisterFormComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
