@@ -11,12 +11,16 @@ import { RegisterFormComponent } from './register-form/register-form.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RouterModule, Routes } from '@angular/router';
+import { MapPageComponent } from './map-page/map-page.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MarkersService } from './markers.service';
 
 
 const routes: Routes = [
     { path: '', component: LoginPageComponent },
     { path: 'login', component: LoginFormComponent },
     { path: 'register', component: RegisterFormComponent },
+    { path: 'map-page', component: MapPageComponent },
   ];
 
 
@@ -27,7 +31,8 @@ const routes: Routes = [
     LoginFormComponent,
     RegisterFormComponent,
     NavbarComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    MapPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,9 +40,10 @@ const routes: Routes = [
     BrowserAnimationsModule,
     MyMaterialModule,
     RouterModule.forRoot(routes),
+    HttpClientModule,
   ],
   exports: [RouterModule],
-  providers: [],
+  providers: [MarkersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
