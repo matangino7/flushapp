@@ -1,24 +1,49 @@
+#video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+
 .error {
     color: red;
-  }
+}
 
-  *{
+* {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana;
     text-align: center;
-  }
+}
 
-  #header {
-    background-color: #673ab7;
-    color: white;
-    margin-left: 40em;
-    margin-right: 40em;
-  }
 
-  .button { 
+.button {
     justify-content: center;
-  }
+    margin-left: 1.5em;
+    margin-right: 1.5em;
+}
 
-  .mat-mdc-card-header {
+.mat-mdc-card-header {
     justify-content: center;
     align-items: center;
-  }
+}
+
+
+.form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    background-color: rgb(0, 0, 0);
+    opacity: 0.60;
+    padding-right: 50%;
+    padding-left: 50%;
+}
+
+
+#head {
+    background-color: #673ab7!important;
+    color: white!important;
+    margin-left: -50%;
+    margin-right: -50%;
+}

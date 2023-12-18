@@ -10,6 +10,14 @@ import { MyMaterialModule } from  './material.module';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { RouterModule, Routes } from '@angular/router';
+
+
+const routes: Routes = [
+    { path: '', component: LoginPageComponent },
+    { path: 'login', component: LoginFormComponent },
+    { path: 'register', component: RegisterFormComponent },
+  ];
 
 
 @NgModule({
@@ -25,8 +33,10 @@ import { LoginPageComponent } from './login-page/login-page.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MyMaterialModule
+    MyMaterialModule,
+    RouterModule.forRoot(routes),
   ],
+  exports: [RouterModule],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -1,3 +1,9 @@
+<video autoplay muted loop id="video">
+    <source src="../../assets/video (2160p).mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video> 
+
+
 <form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="form">
     <div id="header-text">
         <mat-card color="primary" id="header">
@@ -31,6 +37,7 @@
     <br>
     <mat-card-actions class="button">
       <button mat-raised-button color="primary" type="submit" class="button">Login</button>
+      <button routerLink="/" mat-raised-button color="primary" class="button">Back</button>
     </mat-card-actions>
   </form>
   
