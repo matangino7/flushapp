@@ -1,5 +1,7 @@
 import { Component, AfterViewInit } from '@angular/core';
 import * as L from 'leaflet';
+import { MarkersService } from '../markers.service';
+
 
 @Component({
     selector: 'app-map',
@@ -10,6 +12,8 @@ import * as L from 'leaflet';
 
 export class MapComponent implements AfterViewInit {
     private map: L.Map | L.LayerGroup<any> | undefined;
+
+    constructor(private markersService: MarkersService) {}
 
     private initMap(): void {
         this.map = L.map('map', {
@@ -24,9 +28,8 @@ export class MapComponent implements AfterViewInit {
         });
 
         tiles.addTo(this.map);
+        this.markersService.makeToiletMarkers(this.map);
     }
-
-    constructor() { }
 
     ngAfterViewInit(): void {
         this.initMap();
