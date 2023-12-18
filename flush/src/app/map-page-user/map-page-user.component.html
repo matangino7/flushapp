@@ -1,1 +1,16 @@
-<p>map-page-user works!</p>
+<div style="height: 80vh;">
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <span>FlushApp</span>
+        <img src="../../assets/toilet.svg" id=logo height="50" width="50">
+        <span class="menu-spacer"></span>
+        <div fxShow="true" fxHide.lt-md>
+          <a (click)='logout()' mat-button class="mat-shadow-button">Logout</a>
+          <a href="#" mat-button class="mat-shadow-button">About</a>
+          <a href="#" mat-button class="mat-shadow-button">Contact</a>
+        </div>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
+  <app-map></app-map>
+  <app-toilet-list></app-toilet-list>

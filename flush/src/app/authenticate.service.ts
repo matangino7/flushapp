@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +9,10 @@ export class AuthenticateService {
   login(): boolean {    
     localStorage.setItem("access", "allow");
     return true;
+  }
+
+  logout(){
+    localStorage.clear();
   }
 
   isAuthenticated(): boolean {
