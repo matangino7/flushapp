@@ -20,7 +20,9 @@ export class MarkersService {
     makeToiletMarkers(map: L.Map): void {
         this.getToiletMarkers().subscribe(markers => {
             markers.forEach(marker => {
-              L.marker([marker.latitude, marker.longitude]).addTo(map);
+              L.marker([marker.latitude, marker.longitude])
+                .bindPopup(marker.description)
+                .addTo(map);
             });
           });
     }
