@@ -14,6 +14,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MapPageComponent } from './map-page/map-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MarkersService } from './markers.service';
+import { RegisterService } from './register.service';
 
 
 const routes: Routes = [
@@ -43,7 +44,7 @@ const routes: Routes = [
     HttpClientModule,
   ],
   exports: [RouterModule],
-  providers: [MarkersService],
+  providers: [MarkersService, RegisterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

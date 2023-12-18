@@ -15,7 +15,7 @@ export class MarkersService {
 
     getToiletMarkers(): Observable<Marker[]> {
         return this.http.get<Marker[]>(this.endpointUrl);
-      }
+    }
 
     makeToiletMarkers(map: L.Map): void {
         this.getToiletMarkers().subscribe(markers => {
