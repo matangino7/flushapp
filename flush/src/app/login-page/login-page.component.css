@@ -1,0 +1,57 @@
+#video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+
+.content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana;
+    opacity: 0.60;
+  }
+
+
+.mat-mdc-card-header {
+  justify-content: center;
+  align-items: center;
+  color: white;
+
+
+}
+
+*{
+  justify-content: center;
+  align-items: center;
+}
+
+
+#button1{
+    margin-right: 1em; 
+    opacity: 1!important;
+}
+
+
+#buttonm{
+    padding-left: 4.8em;
+    padding-right: 4.8em;
+}
+
+
+#box{
+    margin-left: -50%;
+    margin-right: -50%;
+    padding-bottom: 3%;
+    background-color: rgb(0, 0, 0);
+}
+
+.button {
+    padding-left: 3em;
+    padding-right: 3em;
+}

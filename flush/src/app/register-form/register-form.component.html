@@ -1,0 +1,57 @@
+<video autoplay muted loop id="video">
+    <source src="../../assets/video (2160p).mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video> 
+
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="form">
+    <div id="header-text">
+        <mat-card color="primary" id="header">
+            <mat-card-header id="head">
+                <mat-card-title>
+                    Register
+                </mat-card-title>
+            </mat-card-header>
+        </mat-card>
+    </div>
+    <br>
+    <mat-form-field class="field">
+      <mat-label>Email</mat-label>
+      <input matInput type="text" id="email" formControlName="email" class="input">
+    </mat-form-field>
+    <div *ngIf="myForm.get('email')?.invalid && myForm.get('email')?.touched" class="invalid">
+      <p *ngIf="myForm.get('email')?.hasError('required') || myForm.get('email')?.hasError('email')" class="error">
+        {{ myForm.get('email')?.hasError('required') ? 'Email is required' : 'Not a valid email' }}
+      </p>  
+    </div>
+    <br>
+    <mat-form-field class="field">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" id="password" formControlName="password" class="input">
+    </mat-form-field>
+    <div *ngIf="myForm.get('password')?.invalid && myForm.get('password')?.touched" class="invalid">
+      <p *ngIf="myForm.get('password')?.hasError('required') || myForm.get('password')?.hasError('minlength')" class="error">
+        {{ myForm.get('password')?.hasError('required') ? 'Password is required' : '10 characters minimum' }}
+      </p>
+    </div>
+    <br>
+    <mat-form-field class="field">
+        <mat-label>First Name</mat-label>
+        <input matInput type="text" id="password" class="input" formControlName="firstname">
+      </mat-form-field>
+      <br>
+      <mat-form-field class="field">
+        <mat-label>Last Name</mat-label>
+        <input matInput type="text" id="password" class="input" formControlName="lastname">
+      </mat-form-field>
+      <br>
+      <mat-form-field class="field">
+        <mat-label>Username</mat-label>
+        <input matInput type="text" id="password" class="input" formControlName="username">
+      </mat-form-field>
+      <br>
+    <mat-card-actions class="button">
+      <button mat-raised-button color="primary" type="submit" class="button">Register</button>
+      <button routerLink="/" mat-raised-button color="primary" class="button">Back</button>
+    </mat-card-actions>
+  </form>
