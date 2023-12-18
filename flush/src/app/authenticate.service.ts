@@ -5,13 +5,18 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthenticateService {
-  private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
-  public isAuthenticated$: Observable<boolean> = this.isAuthenticatedSubject.asObservable();
-
   constructor() { }
 
-  login(): Observable<boolean> {    
-    this.isAuthenticatedSubject.next(true);
-    return this.isAuthenticated$;
+  login(): boolean {    
+    localStorage.setItem("access", "allow");
+    return true;
+  }
+
+  isAuthenticated(): boolean {
+    if(localStorage.getItem("access") === "allow"){
+        return true;
+    } else {
+        return false;
+    }
   }
 }
