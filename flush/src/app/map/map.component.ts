@@ -46,7 +46,29 @@ export class MapComponent implements AfterViewInit {
         this.markersService.makeToiletMarkers(this.map);
     }
 
+
+    // private myicon = L.icon({
+    //     iconUrl: 'assets/white-roll-toilet-paper-vector-28147662-removebg-preview.png',
+    //     iconSize:     [80, 95], // size of the icon
+    //     iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    //     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    // })
+
+
+    // private createPoint(lat: number, lng: number): void {
+    //     const marker = L.marker([lat, lng], {icon: this.myicon}).addTo(this.map!);
+    //     marker.bindPopup(`Coordinates: ${lat}, ${lng}`).openPopup();
+    // }
+
+
     ngAfterViewInit(): void {
         this.initMap();
+
+        this.map!.on('click',  (e) => {
+            if(localStorage.getItem('access') === "allow"){
+                var lat = e.latlng.lat;
+                var lng = e.latlng.lng;
+            }
+        })
     }
 }

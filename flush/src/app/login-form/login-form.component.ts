@@ -22,6 +22,8 @@ export class LoginFormComponent{
         this.loginService.login(this.myForm.value).subscribe(
           (response) => {
             this.authenticationService.login();
+            localStorage.setItem("id", response.id)
+            localStorage.setItem("username", response.username)
             window.location.href = "/map-user-page";
           },
           (error) => {

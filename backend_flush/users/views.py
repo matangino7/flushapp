@@ -24,6 +24,6 @@ class LoginAPIView(APIView):
         user = CustomUser.objects.filter(email=email, password=password).first()
 
         if user:
-            return Response({'successful': "login successful"}, status=status.HTTP_201_CREATED)
+            return Response(CostumePersonSerializer(user).data, status=status.HTTP_201_CREATED)
         else:
             return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)

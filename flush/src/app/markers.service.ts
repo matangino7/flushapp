@@ -19,8 +19,15 @@ export class MarkersService {
 
     makeToiletMarkers(map: L.Map): void {
         this.getToiletMarkers().subscribe(markers => {
+            var myicon = L.icon({
+                iconUrl: 'assets/white-roll-toilet-paper-vector-28147662-removebg-preview.png',
+                iconSize:     [80, 95], // size of the icon
+                iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+                popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+            })
+
             markers.forEach(marker => {
-              L.marker([marker.latitude, marker.longitude])
+              L.marker([marker.latitude, marker.longitude], {icon: myicon})
                 .bindPopup(marker.description)
                 .addTo(map);
             });

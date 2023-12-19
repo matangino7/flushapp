@@ -6,4 +6,5 @@ export class User {
     password!: string;
     groups: string = "";
     user_permissions: string = "";
+    id!:  number;
 }
