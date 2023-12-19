@@ -27,6 +27,8 @@ L.Marker.prototype.options.icon = iconDefault;
 
 export class MapComponent implements AfterViewInit {
     private map: L.Map | L.LayerGroup<any> | undefined;
+    public lang: number =  0;
+    public lat: number =  0;
 
     constructor(private markersService: MarkersService) {}
 
@@ -66,8 +68,8 @@ export class MapComponent implements AfterViewInit {
 
         this.map!.on('click',  (e) => {
             if(localStorage.getItem('access') === "allow"){
-                var lat = e.latlng.lat;
-                var lng = e.latlng.lng;
+                this.lat = e.latlng.lat;
+                this.lang = e.latlng.lng;
             }
         })
     }

@@ -20,6 +20,7 @@ import { AuthenticateService } from './authenticate.service';
 import { MapPageUserComponent } from './map-page-user/map-page-user.component';
 import { authGuard } from './auth.guard';
 import { ToiletListComponent } from './toilet-list/toilet-list.component';
+import { ToiletformComponent } from './toiletform/toiletform.component';
 
 
 const routes: Routes = [
@@ -42,6 +43,7 @@ const routes: Routes = [
         MapPageComponent,
         MapPageUserComponent,
         ToiletListComponent,
+        ToiletformComponent,
     ],
     imports: [
         BrowserModule,
