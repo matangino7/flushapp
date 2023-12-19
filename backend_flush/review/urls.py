@@ -8,4 +8,5 @@ router.register(r'review', views.UserView, 'review')
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('fetchReviews/<int:point_id>/', views.fetch_reviews, name='fetch_reviews'),
 ]

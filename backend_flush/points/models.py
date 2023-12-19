@@ -5,7 +5,7 @@ from django.core.files.base import ContentFile
 from django.core.validators import MinValueValidator, MaxValueValidator
 
 class Point(models.Model):
-    user = models.OneToOneField(CustomUser, null=False, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, null=False, on_delete=models.CASCADE)
     longitude = models.DecimalField(max_digits=9, decimal_places=6, blank=False)
     latitude = models.DecimalField(max_digits=9, decimal_places=6, blank=False)
     description = models.CharField(max_length=500, blank=False)
