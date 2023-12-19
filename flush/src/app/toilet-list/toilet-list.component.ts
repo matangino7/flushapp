@@ -10,6 +10,7 @@ import { Marker } from '../marker.model';
 export class ToiletListComponent implements OnInit{
     private endpointUrl = 'http://127.0.0.1:8000/points/';
     public data: Array<Marker> = [];
+    // public url = this.data[0].photo.slice(-12);
 
     constructor(private http: HttpClient) {
     }
@@ -28,5 +29,6 @@ export class ToiletListComponent implements OnInit{
 
     ngOnInit(): void {
         this.makeToiletMarkers();
+
     }
 }
