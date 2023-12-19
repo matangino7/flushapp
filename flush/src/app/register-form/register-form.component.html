@@ -4,54 +4,51 @@
 </video> 
 
 
-<form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="form">
-    <div id="header-text">
-        <mat-card color="primary" id="header">
-            <mat-card-header id="head">
-                <mat-card-title>
-                    Register
-                </mat-card-title>
-            </mat-card-header>
-        </mat-card>
+<div class="form-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-6">
+                <form class="form-horizontal" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+                    <span class="heading">Log In</span>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email" formControlName="email">
+                        <div *ngIf="myForm.get('email')?.invalid && myForm.get('email')?.touched" class="invalid">
+                            <p *ngIf="myForm.get('email')?.hasError('required') || myForm.get('email')?.hasError('email')" class="error">
+                              {{ myForm.get('email')?.hasError('required') ? 'Email is required' : 'Not a valid email' }}
+                            </p>  
+                          </div>
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <div class="form-group help">
+                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password" formControlName="password">
+                        <div *ngIf="myForm.get('password')?.invalid && myForm.get('password')?.touched" class="invalid">
+                            <p *ngIf="myForm.get('password')?.hasError('required') || myForm.get('password')?.hasError('minlength')" class="error">
+                              {{ myForm.get('password')?.hasError('required') ? 'Password is required' : '10 characters minimum' }}
+                            </p>
+                          </div>
+                        <i class="fa fa-lock"></i>
+                        <a href="#" class="fa fa-question-circle"></a>
+                    </div>
+                    <div class="form-group help">
+                        <input type="text" class="form-control" id="inputPassword3" placeholder="First Name" formControlName="first_name">
+                        <i class="fa fa-lock"></i>
+                        <a href="#" class="fa fa-question-circle"></a>
+                    </div>
+                    <div class="form-group help">
+                        <input type="text" class="form-control" id="inputPassword3" placeholder="Last Name" formControlName="last_name">
+                        <i class="fa fa-lock"></i>
+                        <a href="#" class="fa fa-question-circle"></a>
+                    </div>
+                    <div class="form-group help">
+                        <input type="text" class="form-control" id="inputPassword3" placeholder="Username" formControlName="username">
+                        <i class="fa fa-lock"></i>
+                        <a href="#" class="fa fa-question-circle"></a>
+                    </div>
+                    <div class="form-group">
+                        <button mat-raised-button color="primary" type="submit" class="button">Register</button>
+                        <button routerLink="/" mat-raised-button color="primary" class="button">Back</button>
+                    </div>
+                </form>
+            </div>
     </div>
-    <br>
-    <mat-form-field class="field">
-      <mat-label>Email</mat-label>
-      <input matInput type="text" id="email" formControlName="email" class="input">
-    </mat-form-field>
-    <div *ngIf="myForm.get('email')?.invalid && myForm.get('email')?.touched" class="invalid">
-      <p *ngIf="myForm.get('email')?.hasError('required') || myForm.get('email')?.hasError('email')" class="error">
-        {{ myForm.get('email')?.hasError('required') ? 'Email is required' : 'Not a valid email' }}
-      </p>  
-    </div>
-    <br>
-    <mat-form-field class="field">
-      <mat-label>Password</mat-label>
-      <input matInput type="password" id="password" formControlName="password" class="input">
-    </mat-form-field>
-    <div *ngIf="myForm.get('password')?.invalid && myForm.get('password')?.touched" class="invalid">
-      <p *ngIf="myForm.get('password')?.hasError('required') || myForm.get('password')?.hasError('minlength')" class="error">
-        {{ myForm.get('password')?.hasError('required') ? 'Password is required' : '10 characters minimum' }}
-      </p>
-    </div>
-    <br>
-    <mat-form-field class="field">
-        <mat-label>First Name</mat-label>
-        <input matInput type="text" id="password" class="input" formControlName="first_name">
-      </mat-form-field>
-      <br>
-      <mat-form-field class="field">
-        <mat-label>Last Name</mat-label>
-        <input matInput type="text" id="password" class="input" formControlName="last_name">
-      </mat-form-field>
-      <br>
-      <mat-form-field class="field">
-        <mat-label>Username</mat-label>
-        <input matInput type="text" id="password" class="input" formControlName="username">
-      </mat-form-field>
-      <br>
-    <mat-card-actions class="button">
-      <button mat-raised-button color="primary" type="submit" class="button">Register</button>
-      <button routerLink="/" mat-raised-button color="primary" class="button">Back</button>
-    </mat-card-actions>
-  </form>
+</div>

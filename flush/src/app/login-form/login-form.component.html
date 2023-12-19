@@ -4,7 +4,42 @@
 </video> 
 
 
-<form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="form">
+<div class="form-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-6">
+                <form class="form-horizontal" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+                    <span class="heading">Log In</span>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email" formControlName="email">
+                        <div *ngIf="myForm.get('email')?.invalid && myForm.get('email')?.touched" class="invalid">
+                            <p *ngIf="myForm.get('email')?.hasError('required') || myForm.get('email')?.hasError('email')" class="error">
+                              {{ myForm.get('email')?.hasError('required') ? 'Email is required' : 'Not a valid email' }}
+                            </p>  
+                          </div>
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <div class="form-group help">
+                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password" formControlName="password">
+                        <div *ngIf="myForm.get('password')?.invalid && myForm.get('password')?.touched" class="invalid">
+                            <p *ngIf="myForm.get('password')?.hasError('required') || myForm.get('password')?.hasError('minlength')" class="error">
+                              {{ myForm.get('password')?.hasError('required') ? 'Password is required' : '10 characters minimum' }}
+                            </p>
+                          </div>
+                        <i class="fa fa-lock"></i>
+                        <a href="#" class="fa fa-question-circle"></a>
+                    </div>
+                    <div class="form-group">
+                        <button mat-raised-button color="primary" type="submit" class="button">Login</button>
+                        <button routerLink="/" mat-raised-button color="primary" class="button">Back</button>
+                    </div>
+                </form>
+            </div>
+    </div>
+</div>
+
+
+<!-- <form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="form">
     <div id="header-text">
         <mat-card color="primary" id="header">
             <mat-card-header>
@@ -39,5 +74,5 @@
       <button mat-raised-button color="primary" type="submit" class="button">Login</button>
       <button routerLink="/" mat-raised-button color="primary" class="button">Back</button>
     </mat-card-actions>
-  </form>
+  </form> -->
   
