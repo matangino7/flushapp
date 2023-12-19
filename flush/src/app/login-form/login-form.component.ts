@@ -21,7 +21,8 @@ export class LoginFormComponent{
     login() {
         this.loginService.login(this.myForm.value).subscribe(
           (response) => {
-            this.authenticationService.login().subscribe();
+            this.authenticationService.login();
+            window.location.href = "/map-user-page";
           },
           (error) => {
             alert("One or more values are incorrect")

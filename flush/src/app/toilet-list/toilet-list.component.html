@@ -1,0 +1,39 @@
+<div class="container" id="mytoilet">
+    <div class="row">
+        <div *ngFor="let marker of data" class="col-md-12 mb-4">
+            <figure class="card card-product-grid card-lg">
+                <a href="#" class="img-wrap" data-abc="true" *ngIf="marker.photo">
+                    <img [src]="marker.photo" alt="Marker Image">
+                </a>
+                <figcaption class="info-wrap">
+                    <div class="row">
+                        <div class="col-md-9 col-xs-9">
+                            <a href="#" class="title" data-abc="true">{{ marker.description }}</a>
+                            <span class="rated">{{ marker.user }}</span>
+                            <br>
+                            <div *ngIf="marker.reviews">
+                                <ul>
+                                    <li *ngFor="let review of marker.reviews">
+                                        {{ review.text_review }} - Rated {{ review?.numeric_review }}/5
+                                    </li>
+                                </ul>
+                            </div>
+                            <div *ngIf="marker.reviews.length == 0">
+                                No reviews
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-xs-3">
+                            <div class="rating text-right">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <span class="rated">Rated {{ marker.total_rating }}/5</span>
+                            </div>
+                        </div>
+                    </div>
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+</div>

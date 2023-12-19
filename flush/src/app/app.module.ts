@@ -18,7 +18,8 @@ import { RegisterService } from './register.service';
 import { LoginService } from './login.service';
 import { AuthenticateService } from './authenticate.service';
 import { MapPageUserComponent } from './map-page-user/map-page-user.component';
-
+import { authGuard } from './auth.guard';
+import { ToiletListComponent } from './toilet-list/toilet-list.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
     { path: 'login', component: LoginFormComponent },
     { path: 'register', component: RegisterFormComponent },
     { path: 'map-page', component: MapPageComponent },
+    { path: 'map-user-page', component: MapPageUserComponent, canActivate: [authGuard]},
 ];
 
 
@@ -39,6 +41,7 @@ const routes: Routes = [
         LoginPageComponent,
         MapPageComponent,
         MapPageUserComponent,
+        ToiletListComponent,
     ],
     imports: [
         BrowserModule,
