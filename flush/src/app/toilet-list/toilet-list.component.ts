@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, take } from 'rxjs';
 import { Marker } from '../marker.model';
 import { marker } from 'leaflet';
 import { Review } from '../review.model';
+import { DataServiceService } from '../data-service.service';
 
 @Component({
   selector: 'app-toilet-list',
@@ -14,8 +15,9 @@ export class ToiletListComponent implements OnInit {
   private endpointUrl = 'http://127.0.0.1:8000/points/';
   private endpointReview = 'http://127.0.0.1:8000/fetchReviews/';
   public data: Array<Marker> = [];
+  @ViewChild('myFigure') myFigure!: ElementRef;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private dataService: DataServiceService) {}
 
   getToiletMarkers(): Observable<Marker[]> {
     return this.http.get<Marker[]>(this.endpointUrl);
@@ -42,6 +44,11 @@ export class ToiletListComponent implements OnInit {
         console.error('Error fetching toilet markers:', error);
       }
     );
+  }
+
+  onClick(id: number) {
+    this.dataService.updateData(id);
+    location.href = '/review';
   }
 
   ngOnInit(): void {

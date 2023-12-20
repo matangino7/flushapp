@@ -1,5 +1,5 @@
         <div id="main">
-            <figure class="card card-product-grid card-lg" *ngFor="let marker of data">
+            <figure class="card card-product-grid card-lg" *ngFor="let marker of data" #myFigure>
                 <a href="#" class="img-wrap" data-abc="true" *ngIf="marker.photo">
                     <img [src]="marker.photo" alt="Marker Image">
                 </a>
@@ -26,7 +26,9 @@
                                 <span class="rated">Rated {{ marker.total_rating }}/5</span>
                             </div>
                         </div>
+                        <button mat-button (click)="onClick(marker.id)">Click me</button>
                     </div>
                 </figcaption>
             </figure>
         </div>
+        <app-reviewform [point_id]=""></app-reviewform>

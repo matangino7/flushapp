@@ -21,6 +21,10 @@ import { MapPageUserComponent } from './map-page-user/map-page-user.component';
 import { authGuard } from './auth.guard';
 import { ToiletListComponent } from './toilet-list/toilet-list.component';
 import { ToiletformComponent } from './toiletform/toiletform.component';
+import { ReviewformComponent } from './reviewform/reviewform.component';
+import { ToiletRegisterService } from './toilet-register.service';
+import { ReviewRegisterService } from './review-register.service';
+import { DataServiceService } from './data-service.service';
 
 
 const routes: Routes = [
@@ -28,6 +32,7 @@ const routes: Routes = [
     { path: 'login', component: LoginFormComponent },
     { path: 'register', component: RegisterFormComponent },
     { path: 'map-page', component: MapPageComponent },
+    { path: 'review', component: ReviewformComponent },
     { path: 'map-user-page', component: MapPageUserComponent, canActivate: [authGuard]},
 ];
 
@@ -44,6 +49,7 @@ const routes: Routes = [
         MapPageUserComponent,
         ToiletListComponent,
         ToiletformComponent,
+        ReviewformComponent,
     ],
     imports: [
         BrowserModule,
@@ -54,7 +60,7 @@ const routes: Routes = [
         HttpClientModule,
     ],
     exports: [RouterModule],
-    providers: [MarkersService, RegisterService, LoginService, AuthenticateService],
+    providers: [MarkersService, RegisterService, LoginService, AuthenticateService, ToiletRegisterService, ReviewRegisterService, DataServiceService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
