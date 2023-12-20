@@ -1,0 +1,27 @@
+<div class="form-bg" style="padding-right:-100em;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-6">
+                <form class="form-horizontal" [formGroup]="myForm">
+                    <span class="heading">Create Toilet</span>
+                    <div class="form-group help">
+                        <input type="text" class="form-control" id="inputPassword3" placeholder="Description" formControlName="description">
+                    </div>
+                    <div class="form-group help">
+                        <input type="file" class="form-control" id="photo" placeholder="First Name" formControlName="photo">
+                        <i class="fa fa-lock"></i>
+                        <a href="#" class="fa fa-question-circle"></a>
+                    </div>
+                    <div class="form-group help">
+                        <input type="number" class="form-control" id="inputPassword3" placeholder="Rating" formControlName="total_rating" min="1" max="5">
+                        <i class="fa fa-lock"></i>
+                        <a href="#" class="fa fa-question-circle"></a>
+                    </div>
+                    <div class="form-group">
+                        <button mat-raised-button (click)="onSubmit()" color="primary" type="submit" class="button">Submit</button>
+                        <button mat-raised-button (click)="reload()" color="primary" class="button">Back</button>
+                    </div>
+                </form>
+            </div>
+    </div>
+</div>

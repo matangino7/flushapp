@@ -1,6 +1,5 @@
 body {
-    background-color: #EEEEEE;
-    overflow: hidden; /* Prevent scrolling on the entire page */
+    overflow: block; /* Prevent scrolling on the entire page*/ 
 }
 
 a {
@@ -137,8 +136,20 @@ a {
 
 #mytoilet {
     overflow-y: scroll;
-    margin-right: 40em;
-    height: 72em;
+    width: 40em;
+    height: 70em; 
+    margin-left: 0!important;
+    margin-right: 0!important;
+    margin-bottom: 0!important;
 }
 
+._ngcontent-ng-c3845951689{
+    margin-bottom: -1em!important;
+}
 
+#main{
+    overflow-y: scroll;
+    width: 40em;
+    height: 72em;
+    margin-left: 1em;
+}
