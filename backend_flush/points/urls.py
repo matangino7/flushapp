@@ -8,4 +8,5 @@ router.register(r'points', views.UserView, 'points')
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('pointsCreate/', views.createPoint, name='pointsCreate')
 ]

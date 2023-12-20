@@ -1,7 +1,5 @@
-<div class="container" id="mytoilet">
-    <div class="row">
-        <div *ngFor="let marker of data" class="col-md-12 mb-4">
-            <figure class="card card-product-grid card-lg">
+        <div id="main">
+            <figure class="card card-product-grid card-lg" *ngFor="let marker of data">
                 <a href="#" class="img-wrap" data-abc="true" *ngIf="marker.photo">
                     <img [src]="marker.photo" alt="Marker Image">
                 </a>
@@ -32,5 +30,3 @@
                 </figcaption>
             </figure>
         </div>
-    </div>
-</div>

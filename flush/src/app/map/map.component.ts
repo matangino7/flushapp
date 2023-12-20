@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, Output, EventEmitter } from '@angular/core';
 import * as L from 'leaflet';
 import { MarkersService } from '../markers.service';
 
@@ -10,7 +10,7 @@ const iconDefault = L.icon({
   iconUrl,
   shadowUrl,
   iconSize: [25, 41],
-  iconAnchor: [12, 41],
+  iconAnchor: [12, 20.5],
   popupAnchor: [1, -34],
   tooltipAnchor: [16, -28],
   shadowSize: [41, 41]
@@ -29,7 +29,9 @@ export class MapComponent implements AfterViewInit {
     private map: L.Map | L.LayerGroup<any> | undefined;
     public lang: number =  0;
     public lat: number =  0;
+    isComponentVisible: boolean = false;
 
+    @Output() locationSelected = new EventEmitter<{ lat: number; lang: number }>();
     constructor(private markersService: MarkersService) {}
 
     private initMap(): void {
@@ -49,20 +51,6 @@ export class MapComponent implements AfterViewInit {
     }
 
 
-    // private myicon = L.icon({
-    //     iconUrl: 'assets/white-roll-toilet-paper-vector-28147662-removebg-preview.png',
-    //     iconSize:     [80, 95], // size of the icon
-    //     iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-    //     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-    // })
-
-
-    // private createPoint(lat: number, lng: number): void {
-    //     const marker = L.marker([lat, lng], {icon: this.myicon}).addTo(this.map!);
-    //     marker.bindPopup(`Coordinates: ${lat}, ${lng}`).openPopup();
-    // }
-
-
     ngAfterViewInit(): void {
         this.initMap();
 
@@ -70,6 +58,8 @@ export class MapComponent implements AfterViewInit {
             if(localStorage.getItem('access') === "allow"){
                 this.lat = e.latlng.lat;
                 this.lang = e.latlng.lng;
+                this.locationSelected.emit({ lat: this.lat, lang: this.lang });
+                this.isComponentVisible = !this.isComponentVisible
             }
         })
     }
