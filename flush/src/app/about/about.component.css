@@ -1,0 +1,32 @@
+.menu-spacer {
+    flex: 1 1 auto;
+  }
+
+
+  .mat-shadow-button {
+    transition: box-shadow 0.3s ease; 
+  }
+  
+  .mat-shadow-button:hover {
+    background-color: #8452d9;
+  }
+
+
+  #logo {
+    margin-left: 0.5em;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+  }
+  
+  mat-card {
+    max-width: 600px;
+  }
+
+body{
+    background-image: url(../../assets/gen-press-cattelan-america_custom-99d77afb5b3134f7f7173a872ee9ecaa5283e997.jpg)
+}
