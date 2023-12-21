@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { MapPageUserComponent } from './map-page-user.component';
 
 describe('MapPageUserComponent', () => {

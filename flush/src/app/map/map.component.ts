@@ -1,6 +1,7 @@
 import { Component, AfterViewInit, Output, EventEmitter } from '@angular/core';
 import * as L from 'leaflet';
 import { MarkersService } from '../markers.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
 const iconUrl = 'assets/marker-icon.png';
@@ -32,7 +33,7 @@ export class MapComponent implements AfterViewInit {
     isComponentVisible: boolean = false;
 
     @Output() locationSelected = new EventEmitter<{ lat: number; lang: number }>();
-    constructor(private markersService: MarkersService) {}
+    constructor(private markersService: MarkersService, private spinner: NgxSpinnerService) {}
 
     private initMap(): void {
         this.map = L.map('map', {

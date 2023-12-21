@@ -27,15 +27,18 @@ import { ReviewRegisterService } from './review-register.service';
 import { DataServiceService } from './data-service.service';
 import { LoadingscreenComponent } from './loadingscreen/loadingscreen.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { AboutComponent } from './about/about.component';
+import { InternetGuardGuard } from './internetguard.guard';
 
 
 const routes: Routes = [
     { path: '', component: LoginPageComponent },
-    { path: 'login', component: LoginFormComponent },
-    { path: 'register', component: RegisterFormComponent },
-    { path: 'map-page', component: MapPageComponent },
-    { path: 'review', component: ReviewformComponent, canActivate: [authGuard] },
-    { path: 'map-user-page', component: MapPageUserComponent, canActivate: [authGuard]},
+    { path: 'login', component: LoginFormComponent, canActivate: [InternetGuardGuard] },
+    { path: 'register', component: RegisterFormComponent, canActivate: [InternetGuardGuard]},
+    { path: 'map-page', component: MapPageComponent, canActivate: [InternetGuardGuard] },
+    { path: 'about', component: AboutComponent , canActivate: [InternetGuardGuard]},
+    { path: 'review', component: ReviewformComponent, canActivate: [authGuard, InternetGuardGuard] },
+    { path: 'map-user-page', component: MapPageUserComponent, canActivate: [authGuard, InternetGuardGuard]},
 ];
 
 
@@ -53,6 +56,7 @@ const routes: Routes = [
         ToiletformComponent,
         ReviewformComponent,
         LoadingscreenComponent,
+        AboutComponent,
     ],
     imports: [
         BrowserModule,
