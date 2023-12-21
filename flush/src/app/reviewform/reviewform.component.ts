@@ -11,7 +11,7 @@ import { first, take } from 'rxjs';
 })
 export class ReviewformComponent implements OnInit{
     myForm!: FormGroup;
-    @Input point_id!: number;
+    point_id!: number;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -30,6 +30,7 @@ export class ReviewformComponent implements OnInit{
 
     onSubmit() {
         if (this.myForm.valid) {
+            this.point_id = parseInt(localStorage.getItem("itemid")!, 10)
             this.myForm.addControl("point", new FormControl(this.point_id, [Validators.required]));
             this.ReviewRegisterService.register(this.myForm.value).subscribe(response => {
                 console.log(response);

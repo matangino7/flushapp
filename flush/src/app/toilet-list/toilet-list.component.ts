@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, take } from 'rxjs';
+import { Observable, take, timeout, timer } from 'rxjs';
 import { Marker } from '../marker.model';
 import { marker } from 'leaflet';
 import { Review } from '../review.model';
@@ -47,7 +47,7 @@ export class ToiletListComponent implements OnInit {
   }
 
   onClick(id: number) {
-    this.dataService.updateData(id);
+    localStorage.setItem("itemid", id.toString())
     location.href = '/review';
   }
 
