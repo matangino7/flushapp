@@ -11,4 +11,5 @@ export class Marker {
     total_rating: 1|2|3|4|5 = 1; 
     reviews!: Array<Review>;
     id!: number;
+    username!: string;
 }

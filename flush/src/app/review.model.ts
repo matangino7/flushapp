@@ -4,4 +4,5 @@ export class Review {
     text_review!: string;
     numeric_review!: number;
     point!: string;
+    username!: string;
 }

@@ -7,6 +7,9 @@ import { AuthenticateService } from '../authenticate.service';
   styleUrls: ['./map-page-user.component.css']
 })
 export class MapPageUserComponent {
+
+    username = localStorage.getItem("username");
+    
     logout(){
         const auth = new AuthenticateService;
         window.location.href = "/";

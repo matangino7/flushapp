@@ -39,4 +39,9 @@ export class ReviewformComponent implements OnInit{
             })
         }
     }
+
+
+    click() {
+        window.location.href = "/map-user-page";
+    }
 }

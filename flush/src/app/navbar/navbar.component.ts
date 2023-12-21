@@ -10,6 +10,5 @@ export class NavbarComponent implements OnInit{
 
     ngOnInit(): void {
         this.name = localStorage.getItem("username");
-        console.log(localStorage.getItem("username"))
     }
 }

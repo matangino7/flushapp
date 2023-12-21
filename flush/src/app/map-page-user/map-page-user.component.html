@@ -3,6 +3,7 @@
       <mat-toolbar-row>
         <span>FlushApp</span>
         <img src="../../assets/toilet.svg" id=logo height="50" width="50">
+        <span>Hello, {{this.username}}</span>
         <span class="menu-spacer"></span>
         <div fxShow="true" fxHide.lt-md>
           <a (click)='logout()' mat-button class="mat-shadow-button">Logout</a>

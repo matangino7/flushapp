@@ -7,12 +7,12 @@
                     <div class="row">
                         <div class="col-md-9 col-xs-9">
                             <a class="title" data-abc="true">{{ marker.description }}</a>
-                            <span class="rated">{{ marker.user }}</span>
+                            <span class="rated">{{ marker.username }}</span>
                             <br>
                             <div *ngIf="marker.reviews">
                                 <ul>
                                     <li *ngFor="let review of marker.reviews">
-                                        {{ review.text_review }} - Rated {{ review?.numeric_review }}/5
+                                        {{review.username}}: {{ review.text_review }} -Rated {{ review?.numeric_review }}/5
                                     </li>
                                 </ul>
                             </div>
