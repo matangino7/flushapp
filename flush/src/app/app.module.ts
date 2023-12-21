@@ -25,6 +25,8 @@ import { ReviewformComponent } from './reviewform/reviewform.component';
 import { ToiletRegisterService } from './toilet-register.service';
 import { ReviewRegisterService } from './review-register.service';
 import { DataServiceService } from './data-service.service';
+import { LoadingscreenComponent } from './loadingscreen/loadingscreen.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 const routes: Routes = [
@@ -50,6 +52,7 @@ const routes: Routes = [
         ToiletListComponent,
         ToiletformComponent,
         ReviewformComponent,
+        LoadingscreenComponent,
     ],
     imports: [
         BrowserModule,
@@ -58,6 +61,7 @@ const routes: Routes = [
         MyMaterialModule,
         RouterModule.forRoot(routes),
         HttpClientModule,
+        NgxSpinnerModule,
     ],
     exports: [RouterModule],
     providers: [MarkersService, RegisterService, LoginService, AuthenticateService, ToiletRegisterService, ReviewRegisterService, DataServiceService],

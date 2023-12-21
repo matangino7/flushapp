@@ -48,7 +48,28 @@ export class MapComponent implements AfterViewInit {
 
         tiles.addTo(this.map);
         this.markersService.makeToiletMarkers(this.map);
+        this.getLocation(this.map)
     }
+
+
+    private getLocation(map: L.Map): void {
+        navigator.geolocation.getCurrentPosition(
+          position => {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+
+            const blueCircle = L.circleMarker([lat, lon], {
+                radius: 10,
+                color: 'blue',
+                fillOpacity: 1,
+            }).addTo(map);
+            map.setView([lat, lon], 13);
+          },
+          error => {
+            console.error('Error getting location:', error);
+          }
+        );
+      }
 
 
     ngAfterViewInit(): void {
