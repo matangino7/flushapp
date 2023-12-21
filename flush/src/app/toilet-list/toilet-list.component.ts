@@ -1,8 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, take, timeout, timer } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Marker } from '../marker.model';
-import { marker } from 'leaflet';
 import { Review } from '../review.model';
 import { DataServiceService } from '../data-service.service';
 
@@ -30,15 +29,31 @@ export class ToiletListComponent implements OnInit {
   makeToiletMarkers(): void {
     this.getToiletMarkers().subscribe(
       markers => {
-        markers.forEach(marker => {
-            this.data.push(marker);
+        navigator.geolocation.getCurrentPosition(
+          position => {
+            const userLocation = {
+              latitude: position.coords.latitude,
+              longitude: position.coords.longitude
+            };
 
-            this.getToiletReviews(marker.id).subscribe(
-                reviews => {
-                    marker.reviews = reviews;
-                }
-            )
-        })
+            this.data = markers.sort((a, b) => {
+              const distanceA = this.calculateDistance(a.latitude, a.longitude, userLocation);
+              const distanceB = this.calculateDistance(b.latitude, b.longitude, userLocation);
+              return distanceA - distanceB;
+            });
+          },
+          error => {
+            console.error('Error getting user location:', error);
+          }
+        );
+
+        markers.forEach(marker => {
+          this.getToiletReviews(marker.id).subscribe(
+            reviews => {
+              marker.reviews = reviews;
+            }
+          );
+        });
       },
       error => {
         console.error('Error fetching toilet markers:', error);
@@ -46,8 +61,24 @@ export class ToiletListComponent implements OnInit {
     );
   }
 
+  calculateDistance(lat: number, lon: number, userLocation: { latitude: number; longitude: number }): number {
+    const R = 6371; 
+    const dLat = this.toRad(lat - userLocation.latitude);
+    const dLon = this.toRad(lon - userLocation.longitude);
+    const a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(this.toRad(userLocation.latitude)) * Math.cos(this.toRad(lat)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const distance = R * c;
+    return distance;
+  }
+
+  toRad(degrees: number): number {
+    return degrees * (Math.PI / 180);
+  }
+
   onClick(id: number) {
-    localStorage.setItem("itemid", id.toString())
+    localStorage.setItem('itemid', id.toString());
     location.href = '/review';
   }
 
