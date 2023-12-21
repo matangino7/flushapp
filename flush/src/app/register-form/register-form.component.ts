@@ -35,5 +35,5 @@ export class RegisterFormComponent {
         console.log(this.myForm);
         alert("Not a valid form");
       }
- }
+    }
 }

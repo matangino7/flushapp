@@ -1,12 +1,12 @@
         <div id="main">
-            <figure class="card card-product-grid card-lg" *ngFor="let marker of data">
-                <a href="#" class="img-wrap" data-abc="true" *ngIf="marker.photo">
+            <figure class="card card-product-grid card-lg" *ngFor="let marker of data" #myFigure>
+                <a class="img-wrap" data-abc="true" *ngIf="marker.photo">
                     <img [src]="marker.photo" alt="Marker Image">
                 </a>
                 <figcaption class="info-wrap">
                     <div class="row">
                         <div class="col-md-9 col-xs-9">
-                            <a href="#" class="title" data-abc="true">{{ marker.description }}</a>
+                            <a class="title" data-abc="true">{{ marker.description }}</a>
                             <span class="rated">{{ marker.user }}</span>
                             <br>
                             <div *ngIf="marker.reviews">
@@ -26,6 +26,7 @@
                                 <span class="rated">Rated {{ marker.total_rating }}/5</span>
                             </div>
                         </div>
+                        <button mat-raised-button color="primary" (click)="onClick(marker.id)">Add Review</button>
                     </div>
                 </figcaption>
             </figure>
