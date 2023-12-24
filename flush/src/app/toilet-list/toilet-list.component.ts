@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Marker } from '../marker.model';
@@ -14,6 +14,7 @@ export class ToiletListComponent implements OnInit {
   private endpointUrl = 'http://127.0.0.1:8000/points/';
   private endpointReview = 'http://127.0.0.1:8000/fetchReviews/';
   public data: Array<Marker> = [];
+  public toilet = new EventEmitter<Marker>();  // Corrected initialization
   @ViewChild('myFigure') myFigure!: ElementRef;
 
   constructor(private http: HttpClient, private dataService: DataServiceService) {}
@@ -55,11 +56,12 @@ export class ToiletListComponent implements OnInit {
             reviews => {
               marker.reviews = reviews;
               num = reviews.length;
+              
   
               reviews.forEach(review => {
                 sum += review.numeric_review;
               });
-              
+
               marker.total_rating = Math.min(5, Math.max(1, Math.round(Math.abs(sum / num)))) as 1 | 2 | 3 | 4 | 5;
             },
             error => {
@@ -73,7 +75,10 @@ export class ToiletListComponent implements OnInit {
       }
     );
   }
-  
+
+  isValidRating(rating: number): boolean {
+    return Number.isInteger(rating) && rating >= 1 && rating <= 5;
+}
 
   calculateDistance(lat: number, lon: number, userLocation: { latitude: number; longitude: number }): number {
     const R = 6371; 
@@ -95,8 +100,11 @@ export class ToiletListComponent implements OnInit {
     localStorage.setItem('itemid', id.toString());
     location.href = '/review';
   }
+  
 
   ngOnInit(): void {
     this.makeToiletMarkers();
+    this.toilet.emit(this.data[0]);
   }
 }
+

@@ -1,3 +1,4 @@
+        <app-redbutton [toilet]="data[0]"></app-redbutton>
         <div id="main" style="overflow-y: auto;">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
             <figure class="card card-product-grid card-lg" *ngFor="let marker of data" #myFigure>
@@ -21,13 +22,19 @@
                             </div>
                         </div>
                         <div class="col-md-3 col-xs-3">
-                            <div class="rating text-right">
-                                <i class="fa fa-star" *ngFor="let item of [].constructor(marker.total_rating); let i = index"></i>
-                            </div>
-                            <span >Rated {{ marker.total_rating }}/5</span>
+                            <ng-container *ngIf="isValidRating(marker.total_rating)">
+                                <div class="rating text-right">
+                                    <i class="fa fa-star" *ngFor="let item of [].constructor(marker.total_rating); let i = index"></i>
+                                </div>
+                            </ng-container>
+                            <ng-container *ngIf="!isValidRating(marker.total_rating)">
+                                <span>No Rating</span>
+                            </ng-container>
+                            <span *ngIf="isValidRating(marker.total_rating)">Rated {{ marker.total_rating }}/5</span>
                         </div>
                         <button mat-raised-button color="primary" (click)="onClick(marker.id)">Add Review</button>
                     </div>
                 </figcaption>
             </figure>
         </div>
+
