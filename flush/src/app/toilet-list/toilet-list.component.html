@@ -3,7 +3,7 @@
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
             <figure class="card card-product-grid card-lg" *ngFor="let marker of data" #myFigure>
                 <a class="img-wrap" data-abc="true" *ngIf="marker.photo">
-                    <img [src]="marker.photo" alt="Marker Image">
+                    <img [src]="marker.photo" alt="Marker Image" style="border-radius: 20px;">
                 </a>
                 <figcaption class="info-wrap">
                     <div class="row">
@@ -30,7 +30,6 @@
                             <ng-container *ngIf="!isValidRating(marker.total_rating)">
                                 <span>No Rating</span>
                             </ng-container>
-                            <span *ngIf="isValidRating(marker.total_rating)">Rated {{ marker.total_rating }}/5</span>
                         </div>
                         <button mat-raised-button color="primary" (click)="onClick(marker.id)">Add Review</button>
                     </div>

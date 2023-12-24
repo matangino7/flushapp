@@ -9,7 +9,7 @@ import { catchError, map } from 'rxjs/operators';
 export class InternetService {
   constructor(private http: HttpClient) {}
 
-  testUrl = 'http://127.0.0.1:8000/users/';
+  testUrl = 'http://127.0.0.1:8000/is_internet/';
 
   isInternet(): Observable<boolean> {
     return this.http.get(this.testUrl).pipe(
