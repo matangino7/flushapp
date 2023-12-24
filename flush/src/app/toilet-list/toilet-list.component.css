@@ -106,7 +106,7 @@ a {
 
 .rated {
     font-size: 10px;
-    color: #b3b4b6;
+    color: #000000;
 }
 
 .btn {
@@ -149,6 +149,6 @@ a {
 
 #main{
     width: 33em;
-    height: 50em;
+    height: 100%;
     margin-left: 1em;
 }

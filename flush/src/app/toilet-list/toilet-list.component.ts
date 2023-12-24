@@ -35,7 +35,7 @@ export class ToiletListComponent implements OnInit {
               latitude: position.coords.latitude,
               longitude: position.coords.longitude
             };
-
+  
             this.data = markers.sort((a, b) => {
               const distanceA = this.calculateDistance(a.latitude, a.longitude, userLocation);
               const distanceB = this.calculateDistance(b.latitude, b.longitude, userLocation);
@@ -46,11 +46,24 @@ export class ToiletListComponent implements OnInit {
             console.error('Error getting user location:', error);
           }
         );
-
+  
         markers.forEach(marker => {
+          let sum = 0;
+          let num = 0;
+  
           this.getToiletReviews(marker.id).subscribe(
             reviews => {
               marker.reviews = reviews;
+              num = reviews.length;
+  
+              reviews.forEach(review => {
+                sum += review.numeric_review;
+              });
+              
+              marker.total_rating = Math.min(5, Math.max(1, Math.round(Math.abs(sum / num)))) as 1 | 2 | 3 | 4 | 5;
+            },
+            error => {
+              console.error('Error fetching toilet reviews:', error);
             }
           );
         });
@@ -60,6 +73,7 @@ export class ToiletListComponent implements OnInit {
       }
     );
   }
+  
 
   calculateDistance(lat: number, lon: number, userLocation: { latitude: number; longitude: number }): number {
     const R = 6371; 
