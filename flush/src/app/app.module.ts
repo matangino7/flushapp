@@ -29,6 +29,7 @@ import { LoadingscreenComponent } from './loadingscreen/loadingscreen.component'
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { AboutComponent } from './about/about.component';
 import { InternetGuardGuard } from './internetguard.guard';
+import { RedbuttonComponent } from './redbutton/redbutton.component';
 
 
 const routes: Routes = [
@@ -57,6 +58,7 @@ const routes: Routes = [
         ReviewformComponent,
         LoadingscreenComponent,
         AboutComponent,
+        RedbuttonComponent,
     ],
     imports: [
         BrowserModule,
