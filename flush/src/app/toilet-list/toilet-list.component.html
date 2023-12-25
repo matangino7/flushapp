@@ -16,7 +16,7 @@
                                     <li *ngFor="let review of marker.reviews" style="margin-bottom: 1em;">
                                         <mat-card style="background-color: rgb(190, 189, 190);">
                                             {{review.username}}: {{ review.text_review }} -Rated {{ review?.numeric_review }}/5
-                                            <button *ngIf="review.username == currentUser" mat-raised-button style="background-color: red; color: white;" (click)="deleteReview(review.id!)">Delete</button>
+                                            <button color="primary" *ngIf="review.username == currentUser" mat-raised-button style="color: white;" (click)="deleteReview(review.id!)">Delete</button>
                                         </mat-card>
                                     </li>
                                 </ul>
@@ -33,7 +33,7 @@
                             </ng-container>
                         </div>
                         <button mat-raised-button color="primary" (click)="onClick(marker.id)">Add Review</button>
-                        <button *ngIf="marker.username == currentUser" mat-raised-button style="background-color: red; color: white;" (click)="delete(marker.id)">Delete</button>
+                        <button color="primary" *ngIf="marker.username == currentUser" mat-raised-button style="color: white; margin-top: 0.5em;" (click)="delete(marker.id)">Delete</button>
                     </div>
                 </figcaption>
             </figure>
