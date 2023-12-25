@@ -13,4 +13,12 @@ export class ToiletRegisterService {
     register(form: any): Observable<any>{
         return this.http.post(this.endpointUrl, form);
     }
+
+    delete(id: number){
+        return this.http.delete(`http://127.0.0.1:8000/points/${id}/`);
+    }
+
+    deleteReview(id: number){
+        return this.http.delete(`http://127.0.0.1:8000/review/${id}/`);
+    }
 }

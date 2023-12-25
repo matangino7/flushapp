@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Marker } from '../marker.model';
 import { Review } from '../review.model';
 import { DataServiceService } from '../data-service.service';
+import { ToiletRegisterService } from '../toilet-register.service';
 
 @Component({
   selector: 'app-toilet-list',
@@ -15,9 +16,10 @@ export class ToiletListComponent implements OnInit {
   private endpointReview = 'http://127.0.0.1:8000/fetchReviews/';
   public data: Array<Marker> = [];
   public toilet = new EventEmitter<Marker>();  // Corrected initialization
+  public currentUser = localStorage.getItem('username');
   @ViewChild('myFigure') myFigure!: ElementRef;
 
-  constructor(private http: HttpClient, private dataService: DataServiceService) {}
+  constructor(private http: HttpClient, private dataService: DataServiceService, private toiletService: ToiletRegisterService) {}
 
   getToiletMarkers(): Observable<Marker[]> {
     return this.http.get<Marker[]>(this.endpointUrl);
@@ -99,6 +101,30 @@ export class ToiletListComponent implements OnInit {
   onClick(id: number) {
     localStorage.setItem('itemid', id.toString());
     location.href = '/review';
+  }
+
+  delete(id: number) {
+    this.toiletService.delete(id).subscribe(
+      () => {
+        console.log('Toilet deleted successfully');
+        location.href = '/map-user-page';
+      },
+      error => {
+        console.error('Error deleting toilet:', error);
+      }
+    );
+  }
+
+  deleteReview(id: number) {
+    this.toiletService.deleteReview(id).subscribe(
+      () => {
+        console.log('Toilet deleted successfully');
+        location.href = '/map-user-page';
+      },
+      error => {
+        console.error('Error deleting toilet:', error);
+      }
+    );
   }
   
 
