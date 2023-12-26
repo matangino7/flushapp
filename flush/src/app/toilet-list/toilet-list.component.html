@@ -1,7 +1,8 @@
         <app-redbutton [toilet]="data[0]"></app-redbutton>
         <div id="main" style="overflow-y: auto;">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
-            <figure class="card card-product-grid card-lg" *ngFor="let marker of data" #myFigure>
+            <figure class="card card-product-grid card-lg" *ngFor="let marker of data" #myFigure >
+                <button color="primary" *ngIf="marker.username == currentUser" mat-raised-button style="background-color: #EF4040; color: white; margin-top: 0.5em; margin-left: 28em; margin-right: 1.5em; font-weight: bold;" (click)="delete(marker.id)">delete</button>
                 <a class="img-wrap" data-abc="true" *ngIf="marker.photo">
                     <img [src]="marker.photo" alt="Marker Image" style="border-radius: 20px;">
                 </a>
@@ -14,9 +15,9 @@
                             <div *ngIf="marker.reviews">
                                 <ul>
                                     <li *ngFor="let review of marker.reviews" style="margin-bottom: 1em;">
-                                        <mat-card style="background-color: rgb(190, 189, 190);">
+                                        <mat-card style="background-color: rgb(216, 216, 216);">
                                             {{review.username}}: {{ review.text_review }} -Rated {{ review?.numeric_review }}/5
-                                            <button color="primary" *ngIf="review.username == currentUser" mat-raised-button style="color: white;" (click)="deleteReview(review.id!)">Delete</button>
+                                            <button color="primary" *ngIf="review.username == currentUser" mat-raised-button style="color: white; background-color: #EF4040; margin-top: 0.5em; margin-left: 17em; font-weight: bold;" (click)="deleteReview(review.id!)">Delete</button>
                                         </mat-card>
                                     </li>
                                 </ul>
@@ -33,7 +34,6 @@
                             </ng-container>
                         </div>
                         <button mat-raised-button color="primary" (click)="onClick(marker.id)">Add Review</button>
-                        <button color="primary" *ngIf="marker.username == currentUser" mat-raised-button style="color: white; margin-top: 0.5em;" (click)="delete(marker.id)">Delete</button>
                     </div>
                 </figcaption>
             </figure>
